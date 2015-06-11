@@ -45,15 +45,16 @@ public class AccountAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
+        String params[] = data[position].split(" - ");
         View vi = convertView;
         if (vi == null)
             vi = inflater.inflate(R.layout.listview_row, null);
         TextView text = (TextView) vi.findViewById(R.id.accname);
-        text.setText(data[0]);
+        text.setText(params[0]);
         text = (TextView) vi.findViewById(R.id.accno);
-        text.setText(data[1]);
+        text.setText(params[1]);
         text = (TextView) vi.findViewById(R.id.accbal);
-        text.setText(data[2]);
+        text.setText("$ "+params[2]);
 
         return vi;
     }

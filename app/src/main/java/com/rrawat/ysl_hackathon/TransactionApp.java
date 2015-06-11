@@ -3,11 +3,13 @@ package com.rrawat.ysl_hackathon;
 /**
  * Created by RRawat on 11-06-2015.
  */
+import android.os.AsyncTask;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 
-public class TransactionApp {
+public class TransactionApp extends AsyncTask<String, Void,Void>{
 
     private static final String fqcn = TransactionApp.class.getName();
 
@@ -20,5 +22,10 @@ public class TransactionApp {
         System.out.println(jsonResponse);
         Transactions transactions = (Transactions) GSONParser.handleJson(jsonResponse, com.rrawat.ysl_hackathon.Transactions.class);
         return transactions;
+    }
+
+    @Override
+    protected Void doInBackground(String... params) {
+        return null;
     }
 }
