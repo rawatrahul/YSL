@@ -6,17 +6,12 @@ import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,10 +22,6 @@ import java.util.HashMap;
 public class Homescreen extends Activity implements View.OnClickListener {
 
     private static final String TAG = "Speech";
-    private ListView mDrawerList;
-    private ArrayAdapter<String> mAdapter ;
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mDrawerToggle;
     private String mActivityTitle;
     private Accounts uAccounts;
     private TextView searchText;
@@ -62,36 +53,8 @@ public class Homescreen extends Activity implements View.OnClickListener {
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, accountData);
         listView.setAdapter(new AccountAdapter(this,accountData));
 
-        mDrawerList = (ListView)findViewById(R.id.drawer);
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mActivityTitle = getTitle().toString();
-
-        addDrawerItems();
-        setupDrawer();
-
     }
 
-    private void setupDrawer() {
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-//                getSupportActionBar().setTitle("Navigation!");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-//                getSupportActionBar().setTitle(mActivityTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -100,18 +63,6 @@ public class Homescreen extends Activity implements View.OnClickListener {
         return true;
     }
 
-    private void addDrawerItems() {
-        String[] opsArray = { "Account", "Home", "Cards", "Loan", "Logout" };
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, opsArray);
-        mDrawerList.setAdapter(mAdapter);
-
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Homescreen.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
     class listener implements RecognitionListener
     {
         public void onReadyForSpeech(Bundle params)
@@ -157,17 +108,22 @@ public class Homescreen extends Activity implements View.OnClickListener {
             Log.d("Karthik",paramMap.toString());
             String restURL = paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL);
             String methodName = paramMap.get(TextToAPIParameter.RET_PARAM_METHOD_NAME);
+            Intent i;
 
             switch (methodName) {
 
                 case TextToAPIParameter.ACCOUNT_ID :
+                    i = new Intent(Homescreen.this,AccountActivity.class);
+                    i.putExtra(TextToAPIParameter.RET_PARAM_REST_URL,paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL));
+                    i.putExtra(TextToAPIParameter.RET_PARAM_MAGNITUDE,paramMap.get(TextToAPIParameter.RET_PARAM_MAGNITUDE));
+                    startActivity(i);
                     break;
 
                 case TextToAPIParameter.HOLDING_ID :
                     break;
 
                 case TextToAPIParameter.TRANSACTION_ID :
-                    Intent i = new Intent(Homescreen.this,TransactionActivity.class);
+                    i = new Intent(Homescreen.this,TransactionActivity.class);
                     i.putExtra(TextToAPIParameter.RET_PARAM_REST_URL,paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL));
                     i.putExtra(TextToAPIParameter.RET_PARAM_MAGNITUDE,paramMap.get(TextToAPIParameter.RET_PARAM_MAGNITUDE));
                     startActivity(i);

@@ -26,7 +26,7 @@ public class AccountApp extends AsyncTask<String, Void, Accounts> {
         return accounts;
     }
 
-    public static Accounts getAccountsForContainer(String accountSummaryURL) throws IOException,
+    public static Accounts getAccounts(String accountSummaryURL) throws IOException,
             URISyntaxException {
         String mn = "getAccounts()";
         System.out.println(fqcn + " :: " + mn);
@@ -44,7 +44,7 @@ public class AccountApp extends AsyncTask<String, Void, Accounts> {
             if(null == params ||params.length==0|| params[0]==null)
                 allAccounts = getAccounts();
             else
-                allAccounts = getAccountsForContainer(params[0]);
+                allAccounts = getAccounts(params[0]);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {

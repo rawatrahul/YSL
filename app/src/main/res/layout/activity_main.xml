@@ -3,7 +3,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:background="@color/blue_gray_500"
+    android:background="#fff"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
@@ -31,7 +31,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_marginBottom="25dp"
-        android:background="@color/switch_thumb_normal_material_light"
+        android:background="#faffbd"
         android:id="@+id/userLogin"
     />
     <EditText
@@ -41,18 +41,20 @@
         android:gravity="center"
         android:inputType="textPassword"
         android:textSize="30dp"
+        android:background="#faffbd"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:background="@color/switch_thumb_normal_material_light"
+
         android:id="@+id/userPassword"
     />
 
     <Button
         android:id="@+id/login"
-        android:background="@color/A100"
         android:layout_gravity="center"
         android:layout_margin="30dp"
         android:layout_width="225dp"
+        android:background="#55acee"
+        android:textColor="#fff"
         android:layout_height="60dp"
         android:text="Login"
         android:textSize="30dp"/>
