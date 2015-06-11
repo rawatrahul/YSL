@@ -6,37 +6,29 @@ package com.rrawat.ysl_hackathon;
 public class Transaction {
 
     String CONTAINER;
-    String id;
-    String amount;
+    Long id;
+    Double amount;
     String baseType;
     String category;
     String description;
-    String originalDescription;
     String date;
-    String manual;
-    String status;
-    String cusipNumber;
-    String price;
-    String quantity;
-    String symbol;
-    String tradeDate;
-    String accountId;
+    Long accountId;
     public String getCONTAINER() {
         return CONTAINER;
     }
     public void setCONTAINER(String cONTAINER) {
         CONTAINER = cONTAINER;
     }
-    public String getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public String getAmount() {
+    public Double getAmount() {
         return amount;
     }
-    public void setAmount(String amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
     public String getBaseType() {
@@ -57,64 +49,16 @@ public class Transaction {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getOriginalDescription() {
-        return originalDescription;
-    }
-    public void setOriginalDescription(String originalDescription) {
-        this.originalDescription = originalDescription;
-    }
     public String getDate() {
         return date;
     }
     public void setDate(String date) {
         this.date = date;
     }
-    public String getManual() {
-        return manual;
-    }
-    public void setManual(String manual) {
-        this.manual = manual;
-    }
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    public String getCusipNumber() {
-        return cusipNumber;
-    }
-    public void setCusipNumber(String cusipNumber) {
-        this.cusipNumber = cusipNumber;
-    }
-    public String getPrice() {
-        return price;
-    }
-    public void setPrice(String price) {
-        this.price = price;
-    }
-    public String getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-    public String getSymbol() {
-        return symbol;
-    }
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-    public String getTradeDate() {
-        return tradeDate;
-    }
-    public void setTradeDate(String tradeDate) {
-        this.tradeDate = tradeDate;
-    }
-    public String getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
-    public void setAccountId(String accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 

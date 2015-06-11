@@ -26,11 +26,25 @@ public class AccountApp extends AsyncTask<String, Void, Accounts> {
         return accounts;
     }
 
+    public static Accounts getAccountsForContainer(String accountSummaryURL) throws IOException,
+            URISyntaxException {
+        String mn = "getAccounts()";
+        System.out.println(fqcn + " :: " + mn);
+        String jsonResponse = HTTPS.doGet(accountSummaryURL,  LoginApp.loginTokens);
+        Log.d("rahul", jsonResponse);
+        Accounts accounts =(Accounts) GSONParser.handleJson(
+                jsonResponse, com.rrawat.ysl_hackathon.Accounts.class);
+        return accounts;
+    }
+
     @Override
     protected Accounts doInBackground(String... params) {
 
         try {
-            allAccounts = getAccounts();
+            if(null == params ||params.length==0|| params[0]==null)
+                allAccounts = getAccounts();
+            else
+                allAccounts = getAccountsForContainer(params[0]);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {

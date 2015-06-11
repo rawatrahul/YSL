@@ -12,11 +12,12 @@ import java.net.URISyntaxException;
 public class TransactionApp extends AsyncTask<String, Void,Void>{
 
     private static final String fqcn = TransactionApp.class.getName();
+    public Transactions allTransactions;
 
-    public static Transactions getTransactions() throws IOException, URISyntaxException {
+    public static Transactions getTransactions(String transactionsURL) throws IOException, URISyntaxException {
         String mn = "getTransactions()";
         System.out.println(fqcn + " :: " + mn);
-        String transactionsURL = LoginApp.BASE_URL + LoginApp.cobName + "transactions/v1/";
+//        String transactionsURL = LoginApp.BASE_URL + LoginApp.cobName + "transactions/v1/";
         String jsonResponse = HTTPS.doGet(transactionsURL,
                 LoginApp.loginTokens);
         System.out.println(jsonResponse);
@@ -26,6 +27,13 @@ public class TransactionApp extends AsyncTask<String, Void,Void>{
 
     @Override
     protected Void doInBackground(String... params) {
+        try {
+            allTransactions = getTransactions(params[0]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

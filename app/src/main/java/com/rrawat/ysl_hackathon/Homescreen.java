@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by RRawat on 11-06-2015.
@@ -150,6 +151,31 @@ public class Homescreen extends Activity implements View.OnClickListener {
             }
             //for first result
             searchText.setText(String.valueOf(data.get(0)));
+            TextToAPIParameter textToAPIParameter = new TextToAPIParameter();
+            Log.d("Karthik", String.valueOf(data.get(0)));
+            HashMap<String, String> paramMap = textToAPIParameter.getAPIParametersFromSpokenText(String.valueOf(data.get(0)));
+            Log.d("Karthik",paramMap.toString());
+            String restURL = paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL);
+            String methodName = paramMap.get(TextToAPIParameter.RET_PARAM_METHOD_NAME);
+
+            switch (methodName) {
+
+                case TextToAPIParameter.ACCOUNT_ID :
+                    break;
+
+                case TextToAPIParameter.HOLDING_ID :
+                    break;
+
+                case TextToAPIParameter.TRANSACTION_ID :
+                    Intent i = new Intent(Homescreen.this,TransactionActivity.class);
+                    i.putExtra(TextToAPIParameter.RET_PARAM_REST_URL,paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL));
+                    i.putExtra(TextToAPIParameter.RET_PARAM_MAGNITUDE,paramMap.get(TextToAPIParameter.RET_PARAM_MAGNITUDE));
+                    startActivity(i);
+                    break;
+                default:
+                    break;
+
+            }
         }
         public void onPartialResults(Bundle partialResults)
         {
