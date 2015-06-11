@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-    private static String coBrandUserName = "private-yslsandbox20";
+    private static String coBrandUserName = "yslsandbox20";
     private static String coBrandPassword = "Yodlee@123";
 
 

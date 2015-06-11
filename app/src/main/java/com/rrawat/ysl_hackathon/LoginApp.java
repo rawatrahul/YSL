@@ -23,7 +23,7 @@ public class LoginApp extends AsyncTask<String,Void,Void>{
         String mn = "doCoBrandLogin(coBrandUserName " + coBrandUserName + ", coBrandPassword " + coBrandPassword + " )";
         String coBrandLoginURL = BASE_URL + cobName + "/cobrand/v1/login";
         final String requestBody = "cobrandLogin=" + coBrandUserName + "&cobrandPassword=" + coBrandPassword;
-        String jsonResponse = HTTP.doPost(coBrandLoginURL, requestBody);
+        String jsonResponse = HTTPS.doPost(coBrandLoginURL, requestBody);
         CobrandContext coBrand = (CobrandContext) GSONParser.handleJson(jsonResponse, com.rrawat.ysl_hackathon.CobrandContext.class);
         Log.d("rahul", coBrand.getSession());
         loginTokens.put("cobSession", coBrand.getSession());
@@ -37,7 +37,7 @@ public class LoginApp extends AsyncTask<String,Void,Void>{
         final String requestBody="coBrandSessionCredential="+ loginTokens.get("cobSession")+"&userLogin=" + userName + "&userPassword="+ userPassword;
         String userLoginURL = BASE_URL + cobName +  "/user/v1/login";
         //HTTP.addHeaders("Authorization" , loginTokens.get("cobSession"));
-        String jsonResponse = HTTP.doPostUser(userLoginURL, loginTokens, requestBody);
+        String jsonResponse = HTTPS.doPostUser(userLoginURL, loginTokens, requestBody);
         UserContext member = (UserContext) GSONParser.handleJson(jsonResponse, com.rrawat.ysl_hackathon.UserContext.class);
         Log.d("rahul", member.getSession());
         loginTokens.put("userSession", member.getSession());

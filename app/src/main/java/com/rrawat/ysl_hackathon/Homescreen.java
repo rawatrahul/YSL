@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,11 +22,28 @@ public class Homescreen extends Activity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private String mActivityTitle;
+    private Accounts uAccounts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homescreen);
+
+        AccountApp accountApp = new AccountApp();
+        accountApp.execute();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Log.d("rahul", accountApp.allAccounts.toString());
+        String accountData[] = (accountApp.allAccounts.datatoString()).split("\n");
+
+        ListView listView = (ListView) findViewById(R.id.home);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, accountData);
+        listView.setAdapter(new AccountAdapter(this,accountData));
 
         mDrawerList = (ListView)findViewById(R.id.drawer);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);

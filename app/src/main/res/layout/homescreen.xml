@@ -8,6 +8,13 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/home"
+        >
+
+    </ListView>
     <!-- The navigation drawer -->
     <ListView android:id="@+id/drawer"
         android:layout_width="240dp"

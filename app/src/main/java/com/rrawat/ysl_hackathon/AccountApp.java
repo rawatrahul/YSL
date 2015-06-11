@@ -9,16 +9,17 @@ import java.net.URISyntaxException;
 /**
  * Created by RRawat on 11-06-2015.
  */
-public class AccountApp extends AsyncTask<String,Void,Void>{
+public class AccountApp extends AsyncTask<String, Void, Accounts> {
     private static final String fqcn = AccountApp.class.getName();
+    public Accounts allAccounts = null;
 
     public static Accounts getAccounts() throws IOException,
             URISyntaxException {
         String mn = "getAccounts()";
         System.out.println(fqcn + " :: " + mn);
-        String accountSummaryURL = LoginApp.BASE_URL + LoginApp.cobName + "accounts/v1/";
-        String jsonResponse = HTTP.doGet(accountSummaryURL,
-                LoginApp.loginTokens);
+        String accountSummaryURL = LoginApp.BASE_URL + LoginApp.cobName + "/accounts/v1";
+        //String accountSummaryURL = "https://stage.api.yodlee.com:443/ysl/private-yslsandbox20/accounts/v1";
+        String jsonResponse = HTTPS.doGet(accountSummaryURL,  LoginApp.loginTokens);
         Log.d("rahul", jsonResponse);
         Accounts accounts =(Accounts) GSONParser.handleJson(
                 jsonResponse, com.rrawat.ysl_hackathon.Accounts.class);
@@ -26,14 +27,15 @@ public class AccountApp extends AsyncTask<String,Void,Void>{
     }
 
     @Override
-    protected Void doInBackground(String... params) {
+    protected Accounts doInBackground(String... params) {
+
         try {
-            getAccounts();
+            allAccounts = getAccounts();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        return null;
+        return allAccounts;
     }
 }

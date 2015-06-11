@@ -5,15 +5,17 @@ package com.rrawat.ysl_hackathon;
  */
 
 public class Account {
-    private String CONTAINER;
+    private Double balance;
     private String accountName;
     private String accountNumber;
-    private String isAsset;
-    private String balance;
-    private String currency;
-    private String errorCode;
-    private String id;
-    private String lastUpdated;
+    private Boolean isAsset;
+    private String CONTAINER;
+    private Long id;
+
+    /*private String currency;
+    private int errorCode;
+    private Long id;
+    private Long lastUpdated;
     private String nickname;
     private String status;
     private String availableBalance;
@@ -45,7 +47,7 @@ public class Account {
     private String originalLoanAmount;
     private String interestRate;
     private String enrollmentDate;
-    private String primaryRewardUnit;
+    private String primaryRewardUnit;*/
 
     public String getCONTAINER() {
         return CONTAINER;
@@ -71,23 +73,32 @@ public class Account {
         this.accountNumber = accountNumber;
     }
 
-    public String getIsAsset() {
+    public Boolean getIsAsset() {
         return isAsset;
     }
 
-    public void setIsAsset(String isAsset) {
+    public void setIsAsset(Boolean isAsset) {
         this.isAsset = isAsset;
     }
 
-    public String getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
-    public String getCurrency() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+   /* public String getCurrency() {
         return currency;
     }
 
@@ -95,27 +106,19 @@ public class Account {
         this.currency = currency;
     }
 
-    public String getErrorCode() {
+    public int getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(String errorCode) {
+    public void setErrorCode(int errorCode) {
         this.errorCode = errorCode;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLastUpdated() {
+    public Long getLastUpdated() {
         return lastUpdated;
     }
 
-    public void setLastUpdated(String lastUpdated) {
+    public void setLastUpdated(Long lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 
@@ -374,5 +377,5 @@ public class Account {
     public void setPrimaryRewardUnit(String primaryRewardUnit) {
         this.primaryRewardUnit = primaryRewardUnit;
     }
-
+*/
 }

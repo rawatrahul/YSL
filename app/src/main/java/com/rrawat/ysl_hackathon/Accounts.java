@@ -20,7 +20,16 @@ public class Accounts {
         StringBuilder accounts = new StringBuilder("");
         for (int i = 0; i<account.length; i++)
         {
-            accounts.append(account[i].getId()).append("=>").append(account[i].getAccountName()).append("\n");
+            accounts.append(account[i].getId()).append("=>").append(account[i].getAccountName()).append("=>").append(account[i].getBalance()).append("\n");
+        }
+        return accounts.toString();
+    }
+    public String datatoString()
+    {
+        StringBuilder accounts = new StringBuilder("");
+        for (int i = 0; i<account.length; i++)
+        {
+            accounts.append(account[i].getAccountName()).append(" - ").append(account[i].getId()).append(" - ").append(account[i].getBalance()).append("\n");
         }
         return accounts.toString();
     }
