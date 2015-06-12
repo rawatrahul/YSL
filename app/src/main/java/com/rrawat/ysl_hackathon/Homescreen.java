@@ -32,6 +32,7 @@ public class Homescreen extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homescreen);
+
         ImageButton speakButton = (ImageButton) findViewById(R.id.search_button);
         searchText = (TextView) findViewById(R.id.speechsearch);
         speakButton.setOnClickListener(this);
@@ -45,13 +46,16 @@ public class Homescreen extends Activity implements View.OnClickListener {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Log.d("rahul", accountApp.allAccounts.toString());
-        String accountData[] = (accountApp.allAccounts.datatoString()).split("\n");
 
-        ListView listView = (ListView) findViewById(R.id.home);
+        if(accountApp != null && accountApp.allAccounts != null && accountApp.allAccounts.getAccounts() != null) {
+            Log.d("rahul", accountApp.allAccounts.toString());
+            String accountData[] = (accountApp.allAccounts.datatoString()).split("\n");
 
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, accountData);
-        listView.setAdapter(new AccountAdapter(this,accountData));
+            ListView listView = (ListView) findViewById(R.id.home);
+
+            //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, android.R.id.text1, accountData);
+            listView.setAdapter(new AccountAdapter(this, accountData));
+        }
 
     }
 
@@ -61,6 +65,16 @@ public class Homescreen extends Activity implements View.OnClickListener {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        ImageButton speakButton = (ImageButton) findViewById(R.id.search_button);
+        searchText = (TextView) findViewById(R.id.speechsearch);
+        speakButton.setOnClickListener(this);
+        sr = SpeechRecognizer.createSpeechRecognizer(this);
+        sr.setRecognitionListener(new listener());
     }
 
     class listener implements RecognitionListener
@@ -109,6 +123,11 @@ public class Homescreen extends Activity implements View.OnClickListener {
             String restURL = paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL);
             String methodName = paramMap.get(TextToAPIParameter.RET_PARAM_METHOD_NAME);
             Intent i;
+            if(paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL)==null){
+                i = new Intent(Homescreen.this,ErrorActivity.class);
+                startActivity(i);
+                return;
+            }
 
             switch (methodName) {
 
@@ -129,6 +148,12 @@ public class Homescreen extends Activity implements View.OnClickListener {
                     startActivity(i);
                     break;
                 default:
+
+                    i = new Intent(Homescreen.this,SmartActivity.class);
+                    i.putExtra(TextToAPIParameter.RET_PARAM_REST_URL,paramMap.get(TextToAPIParameter.RET_PARAM_REST_URL));
+                    i.putExtra(TextToAPIParameter.SMART_KEYWORD,paramMap.get(TextToAPIParameter.SMART_KEYWORD));
+                    startActivity(i);
+
                     break;
 
             }
@@ -154,5 +179,6 @@ public class Homescreen extends Activity implements View.OnClickListener {
             Log.i("111111","11111111");
         }
     }
+
 
 }

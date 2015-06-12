@@ -31,6 +31,14 @@
             android:name=".AccountActivity"
             android:label="@string/title_activity_account" >
         </activity>
+        <activity
+            android:name=".SmartActivity"
+            android:label="@string/smart_activity_account" >
+        </activity>
+        <activity
+            android:name=".ErrorActivity"
+            android:label="@string/title_activity_error" >
+        </activity>
     </application>
 
 </manifest>
