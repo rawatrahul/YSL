@@ -1,5 +1,10 @@
+/*
+* Copyright (c) 2015 Yodlee, Inc. All Rights Reserved.
+*
+* This software is the confidential and proprietary information of Yodlee, Inc.
+* Use is subject to license terms.
+*/
 package com.rrawat.ysl_hackathon;
-
 
 public class CobrandContext
 {
@@ -8,27 +13,47 @@ public class CobrandContext
     private String applicationId;
     private Session session;
 
-    public void setCobrandId(Long cobrandId) {
-        this.cobrandId = cobrandId;
+
+    static class Session
+    {
+        public Session() {
+        }
+
+        private String cobSession;
+
+        public String getCobSession() {
+            return cobSession;
+        }
+
+        public void setCobSession(String cobSession) {
+            this.cobSession = cobSession;
+        }
+
+
     }
 
-    public void setApplicationId(String applicationId) {
-        this.applicationId = applicationId;
+    public Session getSession() {
+        return session;
     }
+
+
 
     public void setSession(Session session) {
         this.session = session;
     }
 
-    private Session getCobrandConversationCredentials() {
-        return session;
+
+
+    public void setCobrandId(Long cobrandId) {
+        this.cobrandId = cobrandId;
     }
 
 
-    public String getSession()
-    {
-        return this.getCobrandConversationCredentials().getExternalSessionID();
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
     }
+
 
 
     public Long getCobrandId()

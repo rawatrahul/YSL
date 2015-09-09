@@ -7,11 +7,12 @@ public class Transaction {
 
     String CONTAINER;
     Long id;
-    Double amount;
+    Money amount;
     String baseType;
     String category;
     String description;
-    String date;
+    String originalDescription;
+    Date date;
     Long accountId;
     public String getCONTAINER() {
         return CONTAINER;
@@ -25,10 +26,10 @@ public class Transaction {
     public void setId(Long id) {
         this.id = id;
     }
-    public Double getAmount() {
+    public Money getAmount() {
         return amount;
     }
-    public void setAmount(Double amount) {
+    public void setAmount(Money amount) {
         this.amount = amount;
     }
     public String getBaseType() {
@@ -49,10 +50,16 @@ public class Transaction {
     public void setDescription(String description) {
         this.description = description;
     }
-    public String getDate() {
+    public String getOriginalDescription() {
+        return originalDescription;
+    }
+    public void setOriginalDescription(String originalDescription) {
+        this.originalDescription = originalDescription;
+    }
+    public Date getDate() {
         return date;
     }
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
     public Long getAccountId() {

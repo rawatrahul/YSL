@@ -1,7 +1,5 @@
 package com.rrawat.ysl_hackathon;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,8 +12,9 @@ import java.util.Map;
 /**
  * Created by RRawat on 10-06-2015.
  */
-public class HTTP {
 
+public class HTTP
+{
     private static final String fqcn = HTTP.class.getName();
     private static final String userAgent = "Mozilla/5.0";
     private static final String contentTypeURLENCODED="application/x-www-form-urlencoded";
@@ -24,7 +23,7 @@ public class HTTP {
     public static String doPost(String url,String requestBody) throws IOException
     {
         String mn = "doIO(POST : " + url + ", " + requestBody+" )";
-        Log.d("rahul", mn);
+        System.out.println(fqcn + " :: " + mn);
         URL restURL = new URL(url);
         HttpURLConnection conn = (HttpURLConnection) restURL.openConnection();
         conn.setRequestMethod("POST");
@@ -36,8 +35,8 @@ public class HTTP {
         wr.flush();
         wr.close();
         int responseCode = conn.getResponseCode();
-        Log.d("rahul", fqcn + " :: " + mn + " : " + "Sending 'HTTP POST' request");
-        Log.d("rahul", fqcn + " :: " + mn + " : " + "Response Code : " + responseCode);
+        System.out.println(fqcn + " :: " + mn + " : " + "Sending 'HTTP POST' request");
+        System.out.println(fqcn + " :: " + mn + " : "+ "Response Code : " + responseCode);
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(conn.getInputStream()));
         String inputLine;
@@ -46,7 +45,7 @@ public class HTTP {
             jsonResponse.append(inputLine);
         }
         in.close();
-        Log.d("rahul", fqcn + " :: " + mn + " : " + jsonResponse.toString());
+        System.out.println(fqcn + " :: " + mn + " : "+ jsonResponse.toString());
         return new String(jsonResponse);
     }
 
@@ -59,7 +58,7 @@ public class HTTP {
         conn.setRequestMethod("POST");
         conn.setRequestProperty("User-Agent", userAgent);
         conn.setRequestProperty("Content-Type", contentTypeURLENCODED);
-        conn.setRequestProperty("Authorization", sessionTokens.toString());
+        conn.setRequestProperty("Authorization", sessionTokens.toString() );
         conn.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
         wr.writeBytes(requestBody);
@@ -87,16 +86,15 @@ public class HTTP {
         URL myURL = new URL(url);
         System.out.println(fqcn + " :: " + mn + ": Request URL=" + url.toString());
         HttpURLConnection conn = (HttpURLConnection) myURL.openConnection();
-        conn.setRequestMethod("GET");
+        //conn.setRequestMethod("GET");
         conn.setRequestProperty("User-Agent", userAgent);
-        conn.setRequestProperty("Content-Type", contentTypeURLENCODED);
+        //conn.setRequestProperty("Content-Type", contentTypeJSON);
         //conn.setRequestProperty("Accept",);
         conn.setRequestProperty("Authorization", sessionTokens.toString() );
-        conn.setDoOutput(true);
+        conn.setDoOutput(false);
         System.out.println(fqcn + " :: " + mn + " : " + "Sending 'HTTP GET' request");
         int responseCode = conn.getResponseCode();
         System.out.println(fqcn + " :: " + mn + " : "+ "Response Code : " + responseCode);
-
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(conn.getInputStream()));
         String inputLine;

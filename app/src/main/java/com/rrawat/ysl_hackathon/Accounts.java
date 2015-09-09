@@ -20,7 +20,7 @@ public class Accounts {
         StringBuilder accounts = new StringBuilder("");
         if(account != null) {
             for (int i = 0; i < account.length; i++) {
-                accounts.append(account[i].getId()).append("=>").append(account[i].getAccountName()).append("=>").append(account[i].getBalance()).append("\n");
+                accounts.append(account[i].getAccountNumber()).append("=>").append(account[i].getAccountName()).append("=>").append(account[i].getBalance()).append("\n");
             }
         }
         return accounts.toString();
@@ -30,7 +30,8 @@ public class Accounts {
         StringBuilder accounts = new StringBuilder("");
         if(account != null) {
             for (int i = 0; i < account.length; i++) {
-                accounts.append(account[i].getAccountName()).append(" - ").append(account[i].getId()).append(" - ").append(account[i].getBalance()).append("\n");
+            //accounts.append(account[i].getAccountName()).append(" - ").append(account[i].getId()).append(" - ").append(account[i].getBalance()).append("\n");
+                accounts.append(account[i].getAccountName()).append(" - ").append(account[i].getAccountNumber()).append(" - ").append(account[i].getCONTAINER()).append(" - ").append(account[i].getBalance()).append("\n");
             }
         }
         return accounts.toString();

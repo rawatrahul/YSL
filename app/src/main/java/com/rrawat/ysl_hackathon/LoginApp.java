@@ -13,8 +13,9 @@ import java.util.Map;
 public class LoginApp extends AsyncTask<String,Void,Void>{
 
     public final static String BASE_URL = "https://stage.api.yodlee.com/ysl/";
-    public static String cobName = "private-yslsandbox20";
-
+    public static String cobName = "private-sandboxtwo";
+//    public final static String BASE_URL = "http://192.168.57.9:8980/ysl/";
+//    public static String cobName = "yodlee";
 
     private static final String fqcn = LoginApp.class.getName();
     public static Map<String, String> loginTokens = new HashMap<String, String>();
@@ -23,10 +24,10 @@ public class LoginApp extends AsyncTask<String,Void,Void>{
         String mn = "doCoBrandLogin(coBrandUserName " + coBrandUserName + ", coBrandPassword " + coBrandPassword + " )";
         String coBrandLoginURL = BASE_URL + cobName + "/cobrand/v1/login";
         final String requestBody = "cobrandLogin=" + coBrandUserName + "&cobrandPassword=" + coBrandPassword;
-        String jsonResponse = HTTPS.doPost(coBrandLoginURL, requestBody);
+        String jsonResponse = HTTP.doPost(coBrandLoginURL, requestBody);
         CobrandContext coBrand = (CobrandContext) GSONParser.handleJson(jsonResponse, com.rrawat.ysl_hackathon.CobrandContext.class);
-        Log.d("rahul", coBrand.getSession());
-        loginTokens.put("cobSession", coBrand.getSession());
+        Log.d("rahul", coBrand.toString());
+        loginTokens.put("cobSession", coBrand.getSession().getCobSession());
 
     }
 
@@ -37,10 +38,10 @@ public class LoginApp extends AsyncTask<String,Void,Void>{
         final String requestBody="coBrandSessionCredential="+ loginTokens.get("cobSession")+"&userLogin=" + userName + "&userPassword="+ userPassword;
         String userLoginURL = BASE_URL + cobName +  "/user/v1/login";
         //HTTP.addHeaders("Authorization" , loginTokens.get("cobSession"));
-        String jsonResponse = HTTPS.doPostUser(userLoginURL, loginTokens, requestBody);
+        String jsonResponse = HTTP.doPostUser(userLoginURL, loginTokens, requestBody);
         UserContext member = (UserContext) GSONParser.handleJson(jsonResponse, com.rrawat.ysl_hackathon.UserContext.class);
-        Log.d("rahul", member.getSession());
-        loginTokens.put("userSession", member.getSession());
+        Log.d("rahul", member.getSession().getUserSession());
+        loginTokens.put("userSession", member.getSession().getUserSession());
     }
 
     public static void doLogin(String coBrandUserName, String coBrandPassword,String userName, String userPassword) throws IOException

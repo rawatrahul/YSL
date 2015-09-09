@@ -53,8 +53,10 @@ public class AccountAdapter extends BaseAdapter{
         text.setText(params[0]);
         text = (TextView) vi.findViewById(R.id.accno);
         text.setText(params[1]);
+        text = (TextView) vi.findViewById(R.id.acccont);
+        text.setText(params[2].toUpperCase());
         text = (TextView) vi.findViewById(R.id.accbal);
-        text.setText("$ "+params[2]);
+        text.setText("$ "+params[3]);
 
         return vi;
     }

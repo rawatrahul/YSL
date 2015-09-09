@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rrawat.ysl_hackathon.AddAccActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:background="#44cf6c"
+        android:text="Add Account"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_height="55dp" />
+    <EditText
+        android:layout_margin="30dp"
+        android:layout_width="150dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="#fff"
+        android:layout_height="50dp"
+        android:hint="Provider ID"
+        android:id="@+id/providerId"/>
+    <EditText
+        android:layout_margin="10dp"
+        android:layout_width="250dp"
+        android:gravity="center"
+        android:background="#fff"
+        android:layout_gravity="center"
+        android:layout_height="50dp"
+        android:hint="Username"
+        android:id="@+id/site_login"/>
+    <EditText
+        android:layout_margin="30dp"
+        android:layout_width="250dp"
+        android:gravity="center"
+        android:background="#fff"
+        android:layout_gravity="center"
+        android:layout_height="50dp"
+        android:hint="Password"
+        android:id="@+id/site_pass"/>
+    <Button
+        android:id="@+id/addSite"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_width="225dp"
+        android:background="#44cf6c"
+        android:textColor="#fff"
+        android:layout_height="60dp"
+        android:textSize="25dp"
+        android:text="Add Account"/>
+
+
+</LinearLayout>

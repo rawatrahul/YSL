@@ -32,12 +32,24 @@
             android:label="@string/title_activity_account" >
         </activity>
         <activity
-            android:name=".SmartActivity"
-            android:label="@string/smart_activity_account" >
+            android:name=".SiteActivity"
+            android:label="@string/title_activity_site" >
         </activity>
         <activity
-            android:name=".ErrorActivity"
-            android:label="@string/title_activity_error" >
+            android:name=".BillsActivity"
+            android:label="@string/title_activity_bills" >
+        </activity>
+        <activity
+            android:name=".HoldingActivity"
+            android:label="@string/title_activity_holding" >
+        </activity>
+        <activity
+            android:name=".AddAccActivity"
+            android:label="@string/title_activity_add_acc" >
+        </activity>
+        <activity
+            android:name=".AddAccActivityMFA"
+            android:label="@string/title_activity_add_acc_activity_mf" >
         </activity>
     </application>
 

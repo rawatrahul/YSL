@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:background="#44cf6c"
+        android:text="Challenge"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_height="55dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/mfa1"
+        android:layout_height="50dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/mfa1ans"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/mfa2"
+        android:layout_height="50dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/mfa2ans"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/mfa3"
+        android:layout_height="50dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/mfa3ans"/>
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:id="@+id/mfaSubmit"
+        android:layout_gravity="center"
+        android:text="Submit"/>
+
+</LinearLayout>

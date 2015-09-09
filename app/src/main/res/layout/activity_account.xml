@@ -1,9 +1,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4FC3F7"
-    android:padding="5dp"
-    tools:context="com.rrawat.ysl_hackathon.AccountActivity">
+    tools:context="com.rrawat.ysl_hackathon.AccountActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="#44cf6c"
+        android:text="Accounts"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_height="55dp" />
 
     <ListView
         android:id="@+id/home"

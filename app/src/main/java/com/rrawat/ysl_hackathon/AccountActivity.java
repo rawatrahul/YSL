@@ -1,18 +1,19 @@
 package com.rrawat.ysl_hackathon;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 
-public class AccountActivity extends ActionBarActivity {
+public class AccountActivity extends Activity {
 
     TextToSpeech t1;
     private static final CharSequence exceptionMessage = "Sorry there are no accounts for your request !!!";
@@ -23,14 +24,13 @@ public class AccountActivity extends ActionBarActivity {
         setContentView(R.layout.activity_account);
 
         Intent intent = getIntent();
-        String restUrl = intent.getStringExtra(TextToAPIParameter.RET_PARAM_REST_URL);
-        int magnitude = Integer.parseInt(intent.getStringExtra(TextToAPIParameter.RET_PARAM_MAGNITUDE));
 
         AccountApp accountApp = new AccountApp();
-        accountApp.execute(restUrl);
         try {
-            Thread.sleep(3000);
+            accountApp.execute().get();
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
         String accountData[] = null;

@@ -11,4 +11,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_error">ErrorActivity</string>
+    <string name="title_activity_site">SiteActivity</string>
+    <string name="title_activity_bills">BillsActivity</string>
+    <string name="title_activity_holding">HoldingActivity</string>
+    <string name="title_activity_add_acc">AddAccActivity</string>
+    <string name="title_activity_add_acc_activity_mf">AddAccActivityMFA</string>
 </resources>

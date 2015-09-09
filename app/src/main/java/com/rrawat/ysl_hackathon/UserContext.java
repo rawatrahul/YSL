@@ -6,38 +6,36 @@ package com.rrawat.ysl_hackathon;
 
 public class UserContext {
 
-    private String cobrandId;
-    private String applicationId;
+
     private Session session;
 
 
-    private Session getCobrandConversationCredentials() {
+    static class Session
+    {
+        public Session() {
+        }
+
+        private String userSession;
+
+        public String getUserSession() {
+            return userSession;
+        }
+
+        public void setUserSession(String userSession) {
+            this.userSession = userSession;
+        }
+
+
+    }
+
+
+    public Session getSession() {
         return session;
     }
 
 
-    public String getSession()
-    {
-        return this.getCobrandConversationCredentials().getExternalSessionID();
-    }
-
-
-    public String getCobrandId()
-    {
-        return cobrandId;
-    }
-
-
-
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public String toString()
-    {
-        StringBuilder sb = new StringBuilder(this.cobrandId+this.applicationId);
-        System.out.println("CoBrand : toString() = " + sb);
-        return new String(sb);
+    public void setSession(Session session) {
+        this.session = session;
     }
 
 }

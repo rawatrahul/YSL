@@ -60,7 +60,7 @@ public class HTTPS {
         conn.setRequestProperty("User-Agent", userAgent);
         conn.setRequestProperty("Content-Type", contentTypeURLENCODED);
         conn.setRequestProperty("Authorization", sessionTokens.toString() );
-        conn.setDoOutput(true);
+        conn.setDoOutput(false);
         DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
         wr.writeBytes(requestBody);
         wr.flush();
