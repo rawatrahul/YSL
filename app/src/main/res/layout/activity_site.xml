@@ -22,13 +22,15 @@
         <EditText
             android:layout_width="0dp"
             android:layout_weight="0.8"
+            android:padding="5dp"
             android:layout_height="match_parent"
+            android:hint="Enter Site to Search"
             android:background="#fff"
             android:id="@+id/search_string"/>
         <Button
-            android:layout_weight="0.3"
+            android:layout_weight="0.2"
             android:layout_width="0dp"
-            android:text="Search"
+            android:text="Go"
             android:layout_height="match_parent"
             android:id="@+id/search_button"/>
     </LinearLayout>
