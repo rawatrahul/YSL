@@ -1,27 +1,58 @@
+/*
+* Copyright (c) 2015 Yodlee, Inc. All Rights Reserved.
+*
+* This software is the confidential and proprietary information of Yodlee, Inc.
+* Use is subject to license terms.
+*/
 package com.rrawat.ysl_hackathon;
 
-/**
- * Created by RRawat on 26-08-2015.
- */
 public class LoginField {
+
+
+
     private Long id;
     private String name;
     private String type;
+    private String value;
     private String size;
-    private String maxLength;
+    private boolean isOptional;
+    private boolean valueEditable;
+    private Long maxLength;
     private String required;
     private Option[] option;
     private Validation[] validation;
-    private String value;
-    private Boolean valueEditable;
     private String prefix;
     private String suffix;
+    private String image;
+
+
+    public boolean isOptional() {
+        return isOptional;
+    }
+    public void setOptional(boolean isOptional) {
+        this.isOptional = isOptional;
+    }
+    public boolean isValueEditable() {
+        return valueEditable;
+    }
+    public void setValueEditable(boolean valueEditable) {
+        this.valueEditable = valueEditable;
+    }
+    public String getImage() {
+        return image;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
@@ -40,10 +71,10 @@ public class LoginField {
     public void setSize(String size) {
         this.size = size;
     }
-    public String getMaxLength() {
+    public Long getMaxLength() {
         return maxLength;
     }
-    public void setMaxLength(String maxLength) {
+    public void setMaxLength(Long maxLength) {
         this.maxLength = maxLength;
     }
     public String getRequired() {
@@ -70,12 +101,7 @@ public class LoginField {
     public void setValue(String value) {
         this.value = value;
     }
-    public Boolean getValueEditable() {
-        return valueEditable;
-    }
-    public void setValueEditable(Boolean valueEditable) {
-        this.valueEditable = valueEditable;
-    }
+
     public String getPrefix() {
         return prefix;
     }

@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context="com.rrawat.ysl_hackathon.SiteActivity"
     android:orientation="vertical">
 
@@ -22,17 +23,23 @@
             android:layout_width="0dp"
             android:layout_weight="0.8"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:id="@+id/search_string"/>
         <Button
-            android:layout_weight="0.2"
+            android:layout_weight="0.3"
             android:layout_width="0dp"
+            android:text="Search"
             android:layout_height="match_parent"
             android:id="@+id/search_button"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:background="#44cf6c"
+        android:layout_height="5dp" />
     <ListView
         android:id="@+id/site_list"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         >
     </ListView>
 

@@ -1,7 +1,10 @@
 package com.rrawat.ysl_hackathon;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +34,10 @@ public class AddAccActivityMFA extends Activity {
                     AddMfaAccApp addMfaAccApp = new AddMfaAccApp();
 
                     addMfaAccApp.execute(providerId, loginSite, passSite).get();
+                    NotificationCompat.Builder notif = new NotificationCompat.Builder(getBaseContext()).setSmallIcon(R.mipmap.ic_launcher).setContentTitle("Refresh Status").setContentText(AddMfaAccApp.refreshStatus.getRefreshInfo().getRefreshStatus());
+                    NotificationManager mNotificationManager =
+                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    mNotificationManager.notify(1, notif.build());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {

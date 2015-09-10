@@ -10,14 +10,16 @@ public class RefreshStatus {
 
 	private Long providerAccountId;
 	private RefreshInfo refreshInfo;
-	LoginForm loginForm;
-	
-	public LoginForm getLoginForm() {
+	LoginForm2 loginForm;
+
+	public LoginForm2 getLoginForm() {
 		return loginForm;
 	}
-	public void setLoginForm(LoginForm loginForm) {
+
+	public void setLoginForm(LoginForm2 loginForm) {
 		this.loginForm = loginForm;
 	}
+
 	public Long getProviderAccountId() {
 		return providerAccountId;
 	}

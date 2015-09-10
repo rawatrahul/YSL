@@ -1,22 +1,43 @@
+/*
+* Copyright (c) 2015 Yodlee, Inc. All Rights Reserved.
+*
+* This software is the confidential and proprietary information of Yodlee, Inc.
+* Use is subject to license terms.
+*/
 package com.rrawat.ysl_hackathon;
 
-/**
- * Created by RRawat on 26-08-2015.
- */
 public class LoginFormRow {
 
-    private long id;
+    private Long id;
     private String label;
-    private LoginField[] field;
-    private String fieldRowChoice;
     private String form;
+    private String fieldRowChoice;
+    private LoginField[] field;
     private String help;
-    public long getId() {
+    private String isMfaFieldRow;
+    private String rowCriteria;
+
+    public String getIsMfaFieldRow() {
+        return isMfaFieldRow;
+    }
+    public void setIsMfaFieldRow(String isMfaFieldRow) {
+        this.isMfaFieldRow = isMfaFieldRow;
+    }
+    public String getRowCriteria() {
+        return rowCriteria;
+    }
+    public void setRowCriteria(String rowCriteria) {
+        this.rowCriteria = rowCriteria;
+    }
+
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
+
     public String getLabel() {
         return label;
     }

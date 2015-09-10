@@ -37,11 +37,11 @@ public class MainActivity extends Activity implements OnClickListener {
         EditText uName = (EditText) findViewById(R.id.userLogin);
         EditText uPass = (EditText) findViewById(R.id.userPassword);
         //b.setClickable(false);
-//        String userName= String.valueOf(uName.getText());
-//        String userPassword= String.valueOf(uPass.getText());
+        String userName= String.valueOf(uName.getText());
+        String userPassword= String.valueOf(uPass.getText());
 
-        String userName= "yslsourav5";
-        String userPassword= "test123";
+//        String userName= "yslsourav5";
+//        String userPassword= "test123";
 
         LoginApp loginApp = new LoginApp();
         ProgressDialog dialog = new ProgressDialog(MainActivity.this);
