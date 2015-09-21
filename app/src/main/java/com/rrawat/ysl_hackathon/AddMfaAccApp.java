@@ -26,7 +26,6 @@ public class AddMfaAccApp extends AsyncTask<String,Void,Void>{
             refreshStatus = AddAccApp.getRefreshStatus(refreshStatus.getProviderAccountId());
             System.out.println("login form null");
         }
-        System.out.println("---------------------Escaped-----------------");
         if(refreshStatus.getLoginForm().getFormType().equalsIgnoreCase("token")){
         refreshStatus.getLoginForm().getRow()[0].getField()[0].setValue("123456");
         doChallenge(refreshStatus.getLoginForm(), refreshStatus.getProviderAccountId());

@@ -39,6 +39,7 @@
         android:background="#fff"
         android:text="site16441.2"
         android:layout_gravity="center"
+        android:inputType="textPassword"
         android:layout_height="50dp"
         android:hint="Password"
         android:id="@+id/site_pass"/>
